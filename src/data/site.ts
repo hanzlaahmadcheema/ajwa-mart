@@ -12,7 +12,8 @@ export const site = {
   region: 'Punjab',
   country: 'Pakistan',
   postalCode: '57200',
-  addressLine: 'Chichawatni, Punjab 57200, Pakistan',
+  streetAddress: 'Okanwala Road',
+  addressLine: 'Okanwala Road, Chichawatni, Punjab 57200, Pakistan',
 
   /** Display format used across the site. */
   phoneDisplay: '0300 1827927',
@@ -24,11 +25,11 @@ export const site = {
    */
   url: 'https://ajwamart.vercel.app',
 
-  /** Query-based Google Maps links (no invented coordinates). */
+  /** Query-based Google Maps links. */
   mapsSearchUrl:
-    'https://www.google.com/maps/search/?api=1&query=Ajwa+Mart+Chichawatni+Punjab+Pakistan',
+    'https://www.google.com/maps/search/?api=1&query=Ajwa+Mart+Okanwala+Road+Chichawatni+Punjab+Pakistan',
   mapsEmbedUrl:
-    'https://www.google.com/maps?q=Ajwa%20Mart%2C%20Chichawatni%2C%20Punjab%2C%20Pakistan&output=embed',
+    'https://www.google.com/maps?q=Ajwa%20Mart%2C%20Okanwala%20Road%2C%20Chichawatni%2C%20Punjab%2C%20Pakistan&output=embed',
 
   /** Public directory rating — shown with source attribution only. */
   rating: {
@@ -68,5 +69,5 @@ export const navLinks = [
 export const meta = {
   title: 'Ajwa Mart Chichawatni | Grocery, Bakery & Fast Food',
   description:
-    'Ajwa Mart in Chichawatni, Punjab — your local general store for everyday groceries, bakery & sweets, and fast food. Open daily 6:00 AM – 11:00 PM. Call 0300 1827927.',
+    'Ajwa Mart on Okanwala Road, Chichawatni: everyday groceries, fresh bakery, sweets & fast food. Open daily 6 AM – 11 PM. Call 0300 1827927.',
 } as const;
