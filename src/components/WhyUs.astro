@@ -1,0 +1,60 @@
+---
+import StarShine from './StarShine.astro';
+
+const reasons = [
+  {
+    title: 'Everything in one trip',
+    text: 'Groceries, bakery & sweets, and fast food — finish the day\u2019s shopping in a single local stop.',
+    icon: '<path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/>',
+  },
+  {
+    title: 'Open long hours',
+    text: '6:00 AM to 11:00 PM, seven days a week — early mornings to late evenings.',
+    icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+  },
+  {
+    title: 'Easy to reach',
+    text: 'Conveniently located in Chichawatni, with takeaway and delivery options as listed publicly.',
+    icon: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+  },
+  {
+    title: 'A neighbourhood store',
+    text: 'A local business serving the Chichawatni community with everyday essentials.',
+    icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  },
+];
+---
+
+<section class="bg-brand-maroon pattern-dark" aria-labelledby="why-heading">
+  <StarShine tone="dark" uid="spark-why" />
+  <div class="container-x py-16 sm:py-20 lg:py-24">
+    <div class="max-w-2xl" data-reveal>
+      <p class="font-display text-xs font-semibold uppercase tracking-[0.22em] text-brand-yellow">
+        Why Ajwa Mart
+      </p>
+      <h2 id="why-heading" class="mt-3 font-display text-4xl font-semibold uppercase tracking-tight text-white sm:text-5xl">
+        Practical reasons to stop by
+      </h2>
+    </div>
+
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        reasons.map((reason, i) => (
+          <article
+            data-reveal
+            style={`--reveal-delay: ${(i % 4) * 90}ms`}
+            class="lift rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur-[1px]"
+          >
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-yellow text-brand-brown" aria-hidden="true">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={reason.icon} />
+            </span>
+            <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide text-white">
+              {reason.title}
+            </h3>
+            <p class="mt-2 text-[15px] leading-relaxed text-white/75">{reason.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

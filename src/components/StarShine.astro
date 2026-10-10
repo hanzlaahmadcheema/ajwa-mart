@@ -1,0 +1,50 @@
+---
+/**
+ * StarShine — ONE continuous wandering spark per patterned section.
+ *
+ * The layer holds a single reusable .spark group: an edge streak (bright
+ * head + diminishing trail) clipped to part of ONE star outline, and a
+ * .glint (bright core, halo, delicate rays) riding at the streak's head.
+ * JavaScript drives it: trace a small arc of a random star's edge, then
+ * glide — never vanishing — to another random star. Nothing else in the
+ * DOM is animated; the pattern itself never changes.
+ */
+
+interface Props {
+  /** "light" for light sections, "dark" for dark sections. */
+  tone?: 'light' | 'dark';
+  /** Unique id for this instance's glow filter. */
+  uid: string;
+}
+
+const { tone = 'light', uid } = Astro.props;
+
+// Identical to the star path used in the section's background pattern,
+// drawn inside a 96px box so translate(96*i, 96*j) lands exactly on a star.
+const STAR = 'M48 6 L57 39 L90 48 L57 57 L48 90 L39 57 L6 48 L39 39 Z';
+---
+
+<svg class="spark-layer" data-tone={tone} aria-hidden="true" focusable="false">
+  <defs>
+    <filter id={uid} x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.4" result="b" />
+      <feMerge>
+        <feMergeNode in="b" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g class="spark" opacity="0" filter={`url(#${uid})`}>
+    <g class="edge" opacity="1">
+      <path class="edge-t3" d={STAR} pathLength="100" />
+      <path class="edge-t2" d={STAR} pathLength="100" />
+      <path class="edge-t1" d={STAR} pathLength="100" />
+      <path class="edge-head" d={STAR} pathLength="100" />
+    </g>
+    <g class="glint" transform="translate(-50 -50)">
+      <circle class="glint-halo" r="5.5" />
+      <circle class="glint-core" r="2.4" />
+      <g class="rays"></g>
+    </g>
+  </g>
+</svg>

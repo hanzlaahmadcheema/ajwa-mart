@@ -1,0 +1,92 @@
+---
+import { site, navLinks, hours } from '../data/site';
+import StarShine from './StarShine.astro';
+---
+
+<footer class="bg-brand-brown pattern-dark text-white/75" aria-label="Footer">
+  <StarShine tone="dark" uid="spark-foot" />
+  <div class="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:py-16">
+    <div>
+      <picture>
+        <source srcset="/logo.webp" type="image/webp" />
+        <img src="/logo.png" alt="Ajwa Mart official logo" width="72" height="72" class="h-[72px] w-[72px]" loading="lazy" />
+      </picture>
+      <p class="mt-4 text-[15px] leading-relaxed">
+        Ajwa Mart is a local general store in Chichawatni — groceries, bakery &amp; sweets,
+        and fast food under one roof.
+      </p>
+    </div>
+
+    <nav aria-label="Footer">
+      <h2 class="font-display text-base font-semibold uppercase tracking-[0.18em] text-brand-yellow">Explore</h2>
+      <ul class="mt-4 space-y-2.5">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-[15px] transition-colors hover:text-white">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="font-display text-base font-semibold uppercase tracking-[0.18em] text-brand-yellow">Contact</h2>
+      <address class="mt-4 space-y-2.5 text-[15px] not-italic">
+        <p>{site.addressLine}</p>
+        <p>
+          <a href={site.phoneHref} class="font-semibold text-white hover:underline">
+            {site.phoneDisplay}
+          </a>
+        </p>
+      </address>
+      <div class="mt-4 flex gap-3">
+        <a href={site.phoneHref} class="btn !min-h-[44px] !px-5 !py-2 !text-sm bg-brand-yellow text-brand-brown hover:bg-brand-yellow-deep">
+          Call
+        </a>
+        <a
+          href={site.mapsSearchUrl}
+          target="_blank"
+          rel="noopener"
+          class="btn !min-h-[44px] !px-5 !py-2 !text-sm border-2 border-white/40 text-white hover:border-white hover:bg-white/10"
+        >
+          Directions
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="font-display text-base font-semibold uppercase tracking-[0.18em] text-brand-yellow">Hours</h2>
+      <dl class="mt-4 space-y-2.5 text-[15px]">
+        {
+          hours.map((row) => (
+            <div>
+              <dt class="font-semibold text-white/90">{row.days}</dt>
+              <dd class="text-white/60">{row.time}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="container-x flex flex-col items-center justify-between gap-2 py-6 text-sm text-white/50 sm:flex-row">
+      <p>&copy; <span id="year">2026</span> {site.name}, {site.city}. All rights reserved.</p>
+      <p>
+        Designed by{' '}
+        <a
+          href="https://wa.me/923266900001"
+          target="_blank"
+          rel="noopener"
+          class="font-semibold text-white/70 underline-offset-4 hover:text-white hover:underline"
+        >
+          Hanzla Ahmad
+        </a>
+      </p>
+      <p>General store &bull; Bakery &amp; sweets &bull; Fast food</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,61 @@
+---
+import { site } from '../data/site';
+
+/**
+ * Reviews section.
+ *
+ * Only the publicly listed Google rating is shown, with clear source
+ * attribution. No testimonials are invented — individual review excerpts
+ * will appear here only if verified review text is provided by the owner.
+ */
+const fullStars = 4;
+const totalStars = 5;
+---
+
+<section id="reviews" class="scroll-mt-24" aria-labelledby="reviews-heading">
+  <div class="container-x py-16 sm:py-20 lg:py-24">
+    <div class="mx-auto max-w-2xl text-center" data-reveal>
+      <p class="eyebrow">Reviews</p>
+      <h2 id="reviews-heading" class="mt-3 font-display text-4xl font-semibold uppercase tracking-tight sm:text-5xl">
+        What customers say
+      </h2>
+    </div>
+
+    <div class="lift mx-auto mt-10 max-w-xl rounded-3xl border border-brand-border bg-white p-8 text-center shadow-card sm:p-10" data-reveal style="--reveal-delay: 120ms">
+      <p class="font-display text-6xl font-bold text-brand-brown">{site.rating.value}</p>
+      <div class="mt-3 flex items-center justify-center gap-1" role="img" aria-label={`Rated ${site.rating.value} out of 5 stars on Google`}>
+        {
+          Array.from({ length: totalStars }).map((_, i) => (
+            <svg
+              class={`h-6 w-6 ${i < fullStars ? 'text-brand-yellow-deep' : 'text-brand-border'}`}
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+          ))
+        }
+      </div>
+      <p class="mt-3 font-semibold">
+        Based on {site.rating.count} public {site.rating.source} reviews
+      </p>
+      <p class="mt-1 text-sm text-brand-muted">{site.rating.note} &middot; shown for reference</p>
+
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center">
+        <a
+          href={site.mapsSearchUrl}
+          target="_blank"
+          rel="noopener"
+          class="btn bg-brand-maroon text-white hover:bg-brand-maroon-deep"
+        >
+          Read reviews on Google
+        </a>
+      </div>
+      <p class="mt-5 text-sm text-brand-muted">
+        Visited us recently? We&rsquo;d appreciate your honest review on Google — it helps
+        other Chichawatni shoppers find us.
+      </p>
+    </div>
+  </div>
+</section>
