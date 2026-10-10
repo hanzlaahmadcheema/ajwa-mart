@@ -60,7 +60,7 @@ export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'What We Offer', href: '#offer' },
-  { label: 'Gallery', href: '#gallery' },
+  // { label: 'Gallery', href: '#gallery' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Visit Us', href: '#visit' },
 ] as const;
