@@ -13,6 +13,7 @@ interface Props {
 const { title = meta.title, description = meta.description } = Astro.props;
 const canonical = `${site.url}/`;
 const ogImage = `${site.url}/og-image.jpg`;
+const ogImageSquare = `${site.url}/og-image-square.jpg`;
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -77,17 +78,29 @@ const jsonLd = JSON.stringify({
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_PK" />
+
+    <!-- Open Graph Images (Primary 1200x630 card & WhatsApp/Mobile 600x600 square) -->
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Ajwa Mart official logo" />
-    <meta property="og:locale" content="en_PK" />
+    <meta property="og:image:alt" content="Ajwa Mart — Groceries, Bakery & Sweets, and Fast Food on Okanwala Road, Chichawatni" />
+
+    <meta property="og:image" content={ogImageSquare} />
+    <meta property="og:image:secure_url" content={ogImageSquare} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:image:alt" content="Ajwa Mart Logo — Okanwala Road, Chichawatni" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Ajwa Mart — Groceries, Bakery & Sweets, and Fast Food on Okanwala Road, Chichawatni" />
 
     <!-- Icons -->
     <link rel="icon" type="image/png" href="/favicon.png" />
